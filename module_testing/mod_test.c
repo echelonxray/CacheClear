@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[]) {
 	int fd;
-	fd = open("/dev/ClearCache", O_RDONLY);
+	fd = open("/dev/CacheClear", O_RDONLY);
 	if (fd == -1) {
 		printf("Error: Open Failed. errno == %d\n", errno);
 		return 1;

@@ -31,7 +31,7 @@ static const struct file_operations echelon_fops = {
 };
 static struct miscdevice echelon_dev = {
 	.minor = MISC_DYNAMIC_MINOR,
-	.name = "ClearCache",
+	.name = "CacheClear",
 	.fops = &echelon_fops,
 	//.next = NULL,
 	//.prev = NULL,
@@ -48,9 +48,9 @@ static int modFileRelease(struct inode *inode, struct file *filp) {
 }
 */
 static long modFileIoctl(struct file *filp, unsigned int cmd, unsigned long arg) {
-	printk(KERN_INFO "ClearCache: ioctl(file, %u, %lu)\n", cmd, arg);
+	printk(KERN_INFO "CacheClear: ioctl(file, %u, %lu)\n", cmd, arg);
 	if (cmd == 1) {
-		printk(KERN_INFO "ClearCache: Clearing Cache\n");
+		printk(KERN_INFO "CacheClear: Clearing Cache\n");
 		__asm__ __volatile__ ("MFENCE \n"
 		                      "LFENCE \n"
 		                      "WBINVD \n");
